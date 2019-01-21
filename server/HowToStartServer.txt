@@ -1,0 +1,8 @@
+// goto C:\Program Files\MongoDB\Server\3.6\bin in cmd line
+// then type in:
+mongod.exe --dbpath "C:\Users\bentz\OneDrive\Documents\projects\tutorials\UdemyCourses\Node\mongo-data"
+
+open second cmd prompt
+goto same path as above
+type in:
+mongo.exe
