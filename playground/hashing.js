@@ -11,7 +11,7 @@ bcrypt.genSalt(10, (err, salt) => {
 
 let hashPassword = '$2a$10$tjN00lP0CHv3ef2IiYXFrOTzn5ZlfNnPblWApRrLnW12r46yYvq0O';
 bcrypt.compare('123!', hashPassword, (err, res) => {
-    console.log(res);
+   
 });
 
 // let data = {
