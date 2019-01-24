@@ -6,3 +6,7 @@ open second cmd prompt
 goto same path as above
 type in:
 mongo.exe
+
+Missing Heroku Vids
+101 towards the end
+102 whole thing
