@@ -34,6 +34,7 @@ let UserSchema = new mongoose.Schema({
     }
   ]
 });
+
 //UserSchema.methods allows models to have a function associated with it
 UserSchema.methods.toJSON = function() {
   let user = this;
@@ -41,7 +42,7 @@ UserSchema.methods.toJSON = function() {
   return _.pick(userObject, ["_id", "email"]);
 };
 
-UserSchema.methods.generateAuthToken = function() {
+UserSchema.methods.generateAuthToken = async function() {
   let user = this;
   let access = "auth";
   let token = jwt
@@ -49,9 +50,11 @@ UserSchema.methods.generateAuthToken = function() {
     .toString();
   //user.tokens.push({access, token}); <--- doesn't work across all vers of MongoDB
   user.tokens = user.tokens.concat([{ access, token }]);
-  return user.save().then(() => {
-    return token;
-  });
+  await user.save();
+  return token;
+  // return user.save().then(() => {
+  //   return token;
+  // });
 };
 
 UserSchema.methods.removeToken = function(token) {
@@ -114,6 +117,7 @@ UserSchema.pre("save", function(next) {
       next();
   }
 });
+
 let User = mongoose.model("User", UserSchema);
 
 module.exports = { User };
